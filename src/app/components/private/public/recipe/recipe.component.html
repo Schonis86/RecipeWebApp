@@ -1,0 +1,31 @@
+<div class="card container-fluid">
+  <div class="recipe card-header"><h1>{{recipe?.name}}</h1></div>
+  <div class="card-body">
+    <div class="container top-div">
+      <div class="container ingredient-div">
+        <ul>
+          <li *ngFor="let i of recipe.ingredients ">{{i.qty * number}} {{i.measure}} {{i.product}}</li>
+        </ul>
+
+        <div>
+          <select #t (change)="changePortion(t.value)">
+            <option *ngFor="let portion of portions" [value]="portion" [selected]="portion == 4">{{portion}} Portioner</option>
+          </select>
+        </div>
+
+      </div>
+      <div class=" container-fluid image-div">
+        <img *ngIf="recipe?.imageUrl" class="img-fluid" [src]="recipe?.imageUrl">
+      </div>
+    </div>
+    <div class="container bottom-div"></div>
+    <div class="container">
+      <div class="card-text">{{recipe?.description}}</div>
+    </div>
+    <div >
+      <!--<button *ngIf="!currentIngredients.length == [0]" type="button" class="btn btn-outline-primary">Save
+        Recipe
+      </button>-->
+    </div>
+  </div>
+</div>

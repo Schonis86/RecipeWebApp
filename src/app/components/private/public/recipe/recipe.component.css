@@ -1,0 +1,46 @@
+div.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-div {
+ min-width: 60% ;
+  margin-bottom: 15px;
+}
+
+.picture-div {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.recipe {
+  text-align: center;
+}
+.ingredient-holder {
+  height: 150px;
+}
+
+.ingredient-div {
+  display: flex;
+  flex-direction: row;
+  align-content: start;
+}
+
+.ingredient-div li {
+  list-style: none;
+}
+.ingredient-div ul {
+  padding-left: 0;
+}
+
+.top-div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 350px) and (max-width: 900px) {
+  div.container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
