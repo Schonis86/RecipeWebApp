@@ -3,77 +3,87 @@
   <div class="container">
     <div class="card container-fluid">
       <div class="card-body">
-        <form>
+        <form (ngSubmit)="addRecipe(formen)" #formen="ngForm">
+
           <div class="form-group">
-            <label for="recipeName">Recipe Name</label>
-            <input type="text" class="form-control" id="recipeName" aria-describedby="emailHelp"
+            <label for="category">Category</label>
+            <select [ngModel] id="category" name="category" class="custom-select custom-select">
+              <option [value]="category" *ngFor="let category of categoryList">{{category}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Recipe Name</label>
+            <input ngModel name="name" type="text" class="form-control" id="name"
                    placeholder="Enter Name">
           </div>
           <div class="form-group">
             <label for="recipeDescription">Description</label>
-            <textarea class="form-control" id="recipeDescription" rows="3"
+            <textarea ngModel name="recipeDescription" class="form-control" id="recipeDescription" rows="3"
                       placeholder="Describe your recipe..."></textarea>
           </div>
 
-          <div class="card-text ingredient-holder pre-scrollable">
-            <ul>
-              <li> 1 st Lax</li>
-              <li> 5 cl Grädde</li>
-              <li> 2 cl Smör</li>
-              <li> 5 dl Vatten</li>
-              <li> 1 st Majs</li>
-
-
-            </ul>
-          </div>
-
-          <div class="form-row">
-            <div class="col-6">
-              <input class="form-control" type="text" placeholder="Search Ingredient">
-            </div>
-            <div class="col-2">
-              <input class="form-control" type="number" placeholder="qty">
-            </div>
-            <div class="col-2">
-              <select class="custom-select custom-select">
-                <option selected>sort</option>
-                <option value="1">cl</option>
-                <option value="2">dl</option>
-                <option value="3">st</option>
-              </select>
-            </div>
-
-              <button class="btn-sm btn-outline-primary ">Add</button>
-
-          </div>
-
-
           <div class="form-group picture-div">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-              </div>
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-              </div>
-            </div>
+            <input class="form-control" type="text" placeholder="Picture Url" id="url" ngModel name="url">
           </div>
 
           <div class="form-group">
-            <button class="btn btn-outline-primary">Save</button>
+            <button type="submit" class="btn btn-outline-primary">Store</button>
           </div>
+        </form>
+        <div class="card-text ingredient-holder pre-scrollable">
+          <ul>
+            <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.product}}</li>
+          </ul>
+        </div>
 
-
+        <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
+          <div class="col-4">
+            <input ngModel name="product" class="form-control" type="text" placeholder="Search product">
+          </div>
+          <div class="col-2">
+            <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
+          </div>
+          <div class="col-3">
+            <select [ngModel] name="measure" class="custom-select custom-select">
+              <option [value]="measure" *ngFor="let measure of measureList" name="measure" id="measure">{{measure}}
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn-sm btn-outline-primary ">Add</button>
         </form>
       </div>
     </div>
-    <div class="card container-fluid">
-      <div class="card-body">
 
+
+    <div class="card container-fluid">
+      <div class="recipe card-header"><h1>{{recipe?.name}}</h1></div>
+        <div class="card-body">
+          <div class="container top-div">
+            <div class="container ingredient-div">
+              <ul>
+                <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.product}}</li>
+              </ul>
+            </div>
+            <div class=" container image-div">
+              <img *ngIf="recipe.imageUrl" class="img-fluid" [src]="recipe?.imageUrl">
+            </div>
+          </div>
+          <div class="container bottom-div"></div>
+            <div class="container">
+            <div class="card-text">{{recipe?.description}}</div>
+          </div>
+          <div >
+            <button *ngIf="!currentIngredients.length == [0]" type="button" class="btn btn-outline-primary">Save
+              Recipe
+            </button>
+          </div>
+          </div>
       </div>
-    </div>
   </div>
 
 
 </main>
+
+
+<!--https://www.google.se/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi6qeiSjLHdAhUPb1AKHSC4CMIQjRx6BAgBEAU&url=https%3A%2F%2Fwww.ica.se%2Frecept%2Ffiskarhustruns-fisksoppa-3760%2F&psig=AOvVaw27k4PfXYtksB3w5N4Lm3wR&ust=1536691517050403-->
