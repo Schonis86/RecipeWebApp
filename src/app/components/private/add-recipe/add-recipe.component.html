@@ -1,0 +1,79 @@
+<main class="container-fluid">
+  <header class="jumbotron"><h2>Add Recipe</h2></header>
+  <div class="container">
+    <div class="card container-fluid">
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="recipeName">Recipe Name</label>
+            <input type="text" class="form-control" id="recipeName" aria-describedby="emailHelp"
+                   placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="recipeDescription">Description</label>
+            <textarea class="form-control" id="recipeDescription" rows="3"
+                      placeholder="Describe your recipe..."></textarea>
+          </div>
+
+          <div class="card-text ingredient-holder pre-scrollable">
+            <ul>
+              <li> 1 st Lax</li>
+              <li> 5 cl Grädde</li>
+              <li> 2 cl Smör</li>
+              <li> 5 dl Vatten</li>
+              <li> 1 st Majs</li>
+
+
+            </ul>
+          </div>
+
+          <div class="form-row">
+            <div class="col-6">
+              <input class="form-control" type="text" placeholder="Search Ingredient">
+            </div>
+            <div class="col-2">
+              <input class="form-control" type="number" placeholder="qty">
+            </div>
+            <div class="col-2">
+              <select class="custom-select custom-select">
+                <option selected>sort</option>
+                <option value="1">cl</option>
+                <option value="2">dl</option>
+                <option value="3">st</option>
+              </select>
+            </div>
+
+              <button class="btn-sm btn-outline-primary ">Add</button>
+
+          </div>
+
+
+          <div class="form-group picture-div">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-outline-primary">Save</button>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+    <div class="card container-fluid">
+      <div class="card-body">
+
+      </div>
+    </div>
+  </div>
+
+
+</main>
