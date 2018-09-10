@@ -5,4 +5,5 @@ export class Recipe {
   description: string;
   ingredients: Ingredient[];
   imageUrl: string;
+  category: string;
 }
