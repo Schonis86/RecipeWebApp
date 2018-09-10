@@ -6,6 +6,7 @@ import { ContentComponent } from './components/content/content.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddRecipeComponent } from './components/private/add-recipe/add-recipe.component';
 import {FormsModule} from "@angular/forms";
+import {AppService} from "./services/app-service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
