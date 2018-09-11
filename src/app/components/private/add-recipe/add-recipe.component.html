@@ -74,7 +74,7 @@
             <div class="card-text">{{recipe?.description}}</div>
           </div>
           <div >
-            <button *ngIf="!currentIngredients.length == [0]" type="button" class="btn btn-outline-primary">Save
+            <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button" class="btn btn-outline-primary">Save
               Recipe
             </button>
           </div>
