@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {AppService} from './services/app-service';
 import {RecipeComponent} from './components/public/recipe/recipe.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { StartPageComponent } from './components/public/start-page/start-page.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     ContentComponent,
     HeaderComponent,
     AddRecipeComponent,
-    RecipeComponent
+    RecipeComponent,
+    StartPageComponent
   ],
   imports: [
     HttpClientModule,
