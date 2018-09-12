@@ -1,3 +1,25 @@
-<p>
-  start-page works!
-</p>
+<main class="container-fluid">
+  <div *ngFor="let recipe of recipeList" class=" start-page-card card">
+    <div class="card-header"><h1>{{recipe?.name}}</h1></div>
+    <div class="card-body">
+      <div class="container top-div">
+        <div class="ingredient-div">
+          <ul>
+            <li *ngFor="let i of recipe.ingredients ">{{i.qty}} {{i.measure}} {{i.product}}</li>
+          </ul>
+        </div>
+        <div class="image-div">
+          <img *ngIf="recipe.imageUrl" class="img-fluid" [src]="recipe?.imageUrl">
+        </div>
+      </div>
+      <div class="container bottom-div"></div>
+      <div class="container">
+        <div class="card-text">{{recipe?.description}}</div>
+      </div>
+      <div >
+      </div>
+    </div>
+  </div>
+</main>
+
+
