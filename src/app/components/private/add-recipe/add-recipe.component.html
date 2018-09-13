@@ -33,7 +33,7 @@
         </form>
         <div class="card-text ingredient-holder pre-scrollable">
           <ul>
-            <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.product}}</li>
+            <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.ingredient.Namn}}</li>
           </ul>
         </div>
 
@@ -44,7 +44,7 @@
           <mat-form-field class="example-full-width">
             <input (keydown)="getautoComplteList()" type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of autoCompleteList" [value]="option">
+              <mat-option *ngFor="let option of filteredOptions" [value]="option">
                 {{option}}
               </mat-option>
             </mat-autocomplete>

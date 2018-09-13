@@ -17,7 +17,8 @@ export class AddRecipeComponent implements OnInit {
   categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'MatLåda', 'BarnKalas'];
   measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe'];
   currentIngredients: RecipeIngredient[] = [];
-  autoCompleteList: any;
+  autoCompleteList: string[] = [];
+  filteredOptions: string[];
 
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
@@ -32,7 +33,7 @@ export class AddRecipeComponent implements OnInit {
 
   }
 
- addRecipe(form: NgForm) {
+  addRecipe(form: NgForm) {
 
     console.log(this.recipe.name = form.value.name);
     this.recipe.name = form.value.name;
@@ -51,7 +52,7 @@ export class AddRecipeComponent implements OnInit {
     this.ingredient.qty = f.value.qty;
     this.ingredient.measure = f.value.measure;
     this.currentIngredients.push(this.ingredient);
-    f.reset();
+    this.myControl.setValue('');
   }
 
   saveRecipe() {
@@ -63,10 +64,18 @@ export class AddRecipeComponent implements OnInit {
   }
 
   getautoComplteList() {
-    this._service.getAutoCompleteList(this.myControl.value).subscribe(data => {
-      this.autoCompleteList = data;
-      console.log(this.autoCompleteList);
-    });
+    const letters = this.myControl.value;
+    if (letters) {
+      if (letters.length < 2) {
+        this._service.getAutoCompleteList(letters).subscribe((data: string[]) => {
+          this.autoCompleteList = data;
+          this.filteredOptions = data;
+          console.log(this.autoCompleteList);
+        });
+      } else {
+        this.filteredOptions = this.autoCompleteList.filter(options => options.toLowerCase().indexOf(letters) === 0);
+      }
+    }
   }
 
 
