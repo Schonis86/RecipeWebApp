@@ -38,8 +38,8 @@
         </div>
 
         <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
-          <div class="col-4">
-            <input ngModel name="product" class="form-control" type="text" placeholder="Search product">
+          <div class=" ui.widget col-4">
+            <input id="tags" ngModel name="product" class="form-control" type="text" placeholder="Search product">
           </div>
           <div class="col-2">
             <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
@@ -62,7 +62,7 @@
           <div class="container top-div">
             <div class="container ingredient-div">
               <ul>
-                <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.product}}</li>
+                <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.ingredient.Namn}}</li>
               </ul>
             </div>
             <div class=" container image-div">
