@@ -13,6 +13,7 @@ import {RecipeComponent} from './components/public/recipe/recipe.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { StartPageComponent } from './components/public/start-page/start-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

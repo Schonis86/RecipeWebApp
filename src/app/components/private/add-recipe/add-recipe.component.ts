@@ -4,7 +4,6 @@ import {RecipeIngredient} from '../../../models/recipeIngredient.model';
 import {Recipe} from '../../../models/recipe.model';
 import {AppService} from '../../../services/app-service';
 import {Ingredient} from '../../../models/ingredient.model';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-add-recipe',
@@ -18,17 +17,22 @@ export class AddRecipeComponent implements OnInit {
   categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'MatLåda', 'BarnKalas'];
   measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe'];
   currentIngredients: RecipeIngredient[] = [];
+  autoCompleteList: any;
 
-  constructor( private _service: AppService) {
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+
+  constructor(private _service: AppService) {
   }
 
   ngOnInit() {
 
+    // this.getautoComplteList();
     // this.recipe = this._service.getRecipe();
 
   }
 
-  addRecipe(form: NgForm) {
+ addRecipe(form: NgForm) {
 
     console.log(this.recipe.name = form.value.name);
     this.recipe.name = form.value.name;
@@ -43,7 +47,7 @@ export class AddRecipeComponent implements OnInit {
 
     this.ingredient = new RecipeIngredient();
     this.ingredient.ingredient = new Ingredient();
-    this.ingredient.ingredient.Namn = f.value.product;
+    this.ingredient.ingredient.Namn = this.myControl.value;
     this.ingredient.qty = f.value.qty;
     this.ingredient.measure = f.value.measure;
     this.currentIngredients.push(this.ingredient);
@@ -58,6 +62,12 @@ export class AddRecipeComponent implements OnInit {
     });
   }
 
+  getautoComplteList() {
+    this._service.getAutoCompleteList(this.myControl.value).subscribe(data => {
+      this.autoCompleteList = data;
+      console.log(this.autoCompleteList);
+    });
+  }
 
 
 }
