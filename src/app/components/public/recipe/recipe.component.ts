@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AppService} from "../../../services/app-service";
 import {Recipe} from "../../../models/recipe.model";
 import {NgForm} from "@angular/forms";
-import {Ingredient} from "../../../models/ingredient.model";
+import {RecipeIngredient} from "../../../models/recipeIngredient.model";
 
 @Component({
   selector: 'app-recipe',
@@ -11,7 +11,7 @@ import {Ingredient} from "../../../models/ingredient.model";
 })
 export class RecipeComponent implements OnInit {
   recipe: Recipe = new Recipe();
-  ingredients: Ingredient[];
+  ingredients: RecipeIngredient[];
   portions: number[] = [2, 4, 6, 8, 10, 12];
   number = 4;
 
