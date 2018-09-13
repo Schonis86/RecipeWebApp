@@ -1,5 +1,17 @@
+import {Nutritional} from './nutritional.model';
+
 export class Ingredient {
-  product: string;
-  qty: number;
-  measure: string;
+  _id: string;
+  Nummer: string;
+  Namn: string;
+  ViktGram: string;
+  Huvudgrupp: string;
+  Naringsvarden: {
+    Naringsvarde: Nutritional[]
+  };
+}
+
+export interface IIngredientResp {
+  total: number;
+  names: Ingredient[];
 }
