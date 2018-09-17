@@ -35,7 +35,7 @@ import {RouterModule} from '@angular/router';
     MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      {path: 'recipe/:id', component: RecipeComponent},
+      {path: 'recipe/:_id', component: RecipeComponent},
       {path: 'add_recipe', component: AddRecipeComponent},
       {path: 'all_recipes', component: StartPageComponent}
 
