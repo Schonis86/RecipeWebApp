@@ -13,7 +13,7 @@ export class StartPageComponent implements OnInit {
   recipeList: Recipe[] = [];
 
   ngOnInit() {
-    this.getAllRecipe()
+    this.getAllRecipe();
   }
 
   getAllRecipe() {

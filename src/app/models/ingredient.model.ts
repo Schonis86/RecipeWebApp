@@ -11,7 +11,3 @@ export class Ingredient {
   };
 }
 
-export interface IIngredientResp {
-  total: number;
-  names: Ingredient[];
-}
