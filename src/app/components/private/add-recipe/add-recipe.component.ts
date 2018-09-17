@@ -57,7 +57,7 @@ export class AddRecipeComponent implements OnInit {
 
   saveRecipe() {
     this.recipe.ingredients = this.currentIngredients;
-    console.log(this.recipe); 
+    console.log(this.recipe);
     this._service.addRecipe(this.recipe).subscribe(() => {
       console.log('Saved');
       this.currentIngredients = [];
