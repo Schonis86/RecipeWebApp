@@ -1,16 +1,4 @@
-div.container {
-  display: flex;
-  flex-direction: row;
-}
 
-.image-div {
-  max-height: 200px;
-  margin-bottom: 15px;
-}
-.picture-div {
-  margin-top: 10%;
-  margin-bottom: 10%;
-}
 .recipe {
   text-align: center;
 }
@@ -18,23 +6,25 @@ div.container {
  height: 150px;
 }
 
-.ingredient-div {
-  display: flex;
-  flex-direction: row;
-  align-content: start;
+.add_form, .add_ingredients {
+  width: 80vh;
+  height: 92vh;
 }
 
 .ingredient-div li {
   list-style: none;
 }
-.ingredient-div ul {
-  padding-left: 0;
-}
+
 
 .top-div {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
+}
+
+.add_recipe_div {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (min-width: 350px) and (max-width: 767.98px) {

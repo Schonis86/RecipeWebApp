@@ -35,7 +35,6 @@ export class AddRecipeComponent implements OnInit {
 
   addRecipe(form: NgForm) {
 
-    console.log(this.recipe.name = form.value.name);
     this.recipe.name = form.value.name;
     this.recipe.description = form.value.recipeDescription;
     this.recipe.imageUrl = form.value.url;
@@ -51,22 +50,24 @@ export class AddRecipeComponent implements OnInit {
     this.ingredient.ingredient.Namn = this.myControl.value;
     this.ingredient.qty = f.value.qty;
     this.ingredient.measure = f.value.measure;
+    console.log(this.ingredient);
     this.currentIngredients.push(this.ingredient);
     this.myControl.setValue('');
   }
 
   saveRecipe() {
     this.recipe.ingredients = this.currentIngredients;
+    console.log(this.recipe); 
     this._service.addRecipe(this.recipe).subscribe(() => {
       console.log('Saved');
       this.currentIngredients = [];
     });
   }
 
-  getautoComplteList() {
+  getautoCompleteList() {
     const letters = this.myControl.value;
     if (letters) {
-      if (letters.length < 2) {
+      if (letters.length < 3) {
         this._service.getAutoCompleteList(letters).subscribe((data: string[]) => {
           this.autoCompleteList = data;
           this.filteredOptions = data;
