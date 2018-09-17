@@ -4,7 +4,6 @@ import {MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatButtonModu
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
-import {ContentComponent} from './components/content/content.component';
 import {HeaderComponent} from './components/header/header.component';
 import {AddRecipeComponent} from './components/private/add-recipe/add-recipe.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -19,7 +18,6 @@ import {RouterModule} from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    ContentComponent,
     HeaderComponent,
     AddRecipeComponent,
     RecipeComponent,
@@ -37,13 +35,9 @@ import {RouterModule} from '@angular/router';
     MatButtonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      {
-        path: 'content', component: ContentComponent, children: [
-          {path: 'recipe/:id', component: RecipeComponent},
-          {path: 'add_recipe', component: AddRecipeComponent},
-          {path: 'all_recipes', component: StartPageComponent}
-        ]
-      },
+      {path: 'recipe/:id', component: RecipeComponent},
+      {path: 'add_recipe', component: AddRecipeComponent},
+      {path: 'all_recipes', component: StartPageComponent}
 
     ])
   ],
