@@ -1,74 +1,74 @@
-<div class="add_recipe_div">
-  <div class="card add_form">
-    <div class="card-header">Add Recipe</div>
-    <div class="card-body">
-      <form (ngSubmit)="addRecipe(formen)" #formen="ngForm">
-
-        <div class="form-group">
-          <label for="category">Category</label>
-          <select [ngModel] id="category" name="category" class="custom-select custom-select">
-            <option [value]="category" *ngFor="let category of categoryList">{{category}}</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="name">Recipe Name</label>
-          <input ngModel name="name" type="text" class="form-control" id="name"
-                 placeholder="Enter Name">
-        </div>
-        <div class="form-group">
-          <label for="recipeDescription">Description</label>
-          <textarea ngModel name="recipeDescription" class="form-control" id="recipeDescription" rows="3"
-                    placeholder="Describe your recipe..."></textarea>
-        </div>
-
-        <div class="form-group picture-div">
-          <input class="form-control" type="text" placeholder="Picture Url" id="url" ngModel name="url">
-        </div>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-outline-primary">Store</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-
-  <div class="card add_ingredients">
-    <div class="card-body">
-      <div class="card-text ingredient-holder pre-scrollable">
+<div class="row">
+  <div class="col-12 col-md-6">
+    <div class="card ">
+      <div class="card-header">Add Recipe</div>
+      <div class="card-body">
+        <form (ngSubmit)="addRecipe(formen)" #formen="ngForm">
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select [ngModel] id="category" name="category" class="custom-select custom-select">
+              <option [value]="category" *ngFor="let category of categoryList">{{category}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Recipe Name</label>
+            <input ngModel name="name" type="text" class="form-control" id="name"
+                   placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="recipeDescription">Description</label>
+            <textarea ngModel name="recipeDescription" class="form-control" id="recipeDescription" rows="3"
+                      placeholder="Describe your recipe..."></textarea>
+          </div>
+          <div class="form-group picture-div">
+            <input class="form-control" type="text" placeholder="Picture Url" id="url" ngModel name="url">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-outline-primary">Store</button>
+          </div>
+        </form>
         <ul>
-          <li *ngFor="let i of currentIngredients ">{{i.qty}} {{i.measure}} {{i.ingredient.Namn}}</li>
+          <li *ngFor="let ingredient of currentIngredients">
+            {{ingredient.qty}} {{ingredient.measure}} {{ingredient.ingredient.Namn}}
+          </li>
         </ul>
-      </div>
 
-      <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
-        <mat-form-field class="example-full-width">
-          <input (keydown)="getautoCompleteList()" type="text" placeholder="Pick one" aria-label="Number" matInput
-                 [formControl]="myControl" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <div class="col-2">
-          <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
+        <div class="row">
+          <div class="col-12">
+          <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
+            <mat-form-field class="example-full-width">
+              <input (keydown)="getautoCompleteList()" type="text" placeholder="Pick one" aria-label="Number" matInput
+                     [formControl]="myControl" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div class="col-2">
+              <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
+            </div>
+            <div class="col-3">
+              <select [ngModel] name="measure" class="custom-select custom-select">
+                <option [value]="measure" *ngFor="let measure of measureList" name="measure" id="measure">{{measure}}
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn-sm btn-outline-primary ">Add</button>
+          </form>
+          </div>
+
         </div>
-        <div class="col-3">
-          <select [ngModel] name="measure" class="custom-select custom-select">
-            <option [value]="measure" *ngFor="let measure of measureList" name="measure" id="measure">{{measure}}
-            </option>
-          </select>
-        </div>
-        <button type="submit" class="btn-sm btn-outline-primary ">Add</button>
-      </form>
-      <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button"
-              class="btn btn-outline-primary">Save
-        Recipe
-      </button>
+          <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button"
+                  class="btn btn-outline-primary">Save Recipe
+          </button>
+      </div>
     </div>
   </div>
-
+  <div class="col-12 col-md-6">
+    <div class="card ">
+      <div class="card-header">Template</div>
+    </div>
+  </div>
 </div>
 

@@ -8,7 +8,10 @@ import {Ingredient} from '../../../models/ingredient.model';
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.css']
+  styleUrls: ['./add-recipe.component.css'],
+  host: {
+    class: 'container-fluid'
+  }
 })
 export class AddRecipeComponent implements OnInit {
   // currentIngredients: RecipeIngredient[] = [];
