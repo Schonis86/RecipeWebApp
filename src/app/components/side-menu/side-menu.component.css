@@ -1,0 +1,13 @@
+.menu_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 92vh;
+  width: 20vh;
+  border-style: solid;
+  border-color: lightblue;
+}
+
+li {
+  list-style: none;
+}

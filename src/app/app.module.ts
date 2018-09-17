@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatButtonModule} from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
 import {ContentComponent} from './components/content/content.component';
@@ -11,7 +11,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppService} from './services/app-service';
 import {RecipeComponent} from './components/public/recipe/recipe.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { StartPageComponent } from './components/public/start-page/start-page.component';
+import {StartPageComponent} from './components/public/start-page/start-page.component';
+import {SideMenuComponent} from './components/side-menu/side-menu.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { StartPageComponent } from './components/public/start-page/start-page.co
     HeaderComponent,
     AddRecipeComponent,
     RecipeComponent,
-    StartPageComponent
+    StartPageComponent,
+    SideMenuComponent
   ],
   imports: [
     HttpClientModule,
@@ -32,7 +35,17 @@ import { StartPageComponent } from './components/public/start-page/start-page.co
     MatAutocompleteModule,
     MatFormFieldModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      {
+        path: 'content', component: ContentComponent, children: [
+          {path: 'recipe/:id', component: RecipeComponent},
+          {path: 'add_recipe', component: AddRecipeComponent},
+          {path: 'all_recipes', component: StartPageComponent}
+        ]
+      },
+
+    ])
   ],
   providers: [AppService, HttpClient],
   bootstrap: [AppComponent]
