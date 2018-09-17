@@ -1,18 +1,18 @@
-.start-page-card {
-  max-width: 30%;
-}
 
-main {
+
+.start-div {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 350px) and (max-width: 900px) {
-  main {
+  .start-div {
     display: flex;
     flex-direction: column;
-
+    flex-wrap: wrap;
   }
   .start-page-card {
-    max-width: 100%;
+    margin-bottom: 20px;
   }
 }
