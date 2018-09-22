@@ -16,9 +16,10 @@ import {Ingredient} from '../../../models/ingredient.model';
 export class AddRecipeComponent implements OnInit {
   // currentIngredients: RecipeIngredient[] = [];
   ingredient: RecipeIngredient;
+  instructions: string[] = [];
   recipe: Recipe = new Recipe();
   categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'MatLåda', 'BarnKalas'];
-  measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe'];
+  measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe', 'portioner'];
   currentIngredients: RecipeIngredient[] = [];
   autoCompleteList: string[] = [];
   filteredOptions: string[];
@@ -57,8 +58,13 @@ export class AddRecipeComponent implements OnInit {
     this.currentIngredients.push(this.ingredient);
     this.myControl.setValue('');
   }
+  addInstructions(instruct: NgForm) {
+    this.instructions.push(instruct.value.instruction);
+    instruct.reset();
+  }
 
   saveRecipe() {
+    this.recipe.instructions = this.instructions;
     this.recipe.ingredients = this.currentIngredients;
     console.log(this.recipe);
     this._service.addRecipe(this.recipe).subscribe(() => {

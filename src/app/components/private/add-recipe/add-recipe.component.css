@@ -3,14 +3,21 @@
   display: flex;
   flex-direction: row;
 }
+
 ul li {
   list-style: none;
 }
-ul {
-  height: 100px;
-}
+
 .card {
   height: 93vh;
+}
+
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
 }
 
 @media (min-width: 350px) and (max-width: 767.98px) {

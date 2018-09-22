@@ -16,9 +16,9 @@
                    placeholder="Enter Name">
           </div>
           <div class="form-group">
-            <label for="recipeDescription">Description</label>
+            <label for="recipeDescription">Info</label>
             <textarea ngModel name="recipeDescription" class="form-control" id="recipeDescription" rows="3"
-                      placeholder="Describe your recipe..."></textarea>
+                      placeholder="Info about your recipe..."></textarea>
           </div>
           <div class="form-group picture-div">
             <input class="form-control" type="text" placeholder="Picture Url" id="url" ngModel name="url">
@@ -35,39 +35,64 @@
 
         <div class="row">
           <div class="col-12">
-          <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
-            <mat-form-field class="example-full-width">
-              <input (keydown)="getautoCompleteList()" type="text" placeholder="Pick one" aria-label="Number" matInput
-                     [formControl]="myControl" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions" [value]="option">
-                  {{option}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-            <div class="col-2">
-              <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
-            </div>
-            <div class="col-3">
-              <select [ngModel] name="measure" class="custom-select custom-select">
-                <option [value]="measure" *ngFor="let measure of measureList" name="measure" id="measure">{{measure}}
-                </option>
-              </select>
-            </div>
-            <button type="submit" class="btn-sm btn-outline-primary ">Add</button>
-          </form>
+            <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
+              <mat-form-field class="example-full-width">
+                <input (keydown)="getautoCompleteList()" type="text" placeholder="Pick one" aria-label="Number" matInput
+                       [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <div class="col-2">
+                <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
+              </div>
+              <div class="col-3">
+                <select [ngModel] name="measure" class="custom-select custom-select">
+                  <option [value]="measure" *ngFor="let measure of measureList" name="measure" id="measure">{{measure}}
+                  </option>
+                </select>
+              </div>
+              <button type="submit" class="btn-sm btn-outline-primary ">Add</button>
+            </form>
+            <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button"
+                    class="btn btn-outline-primary">Save Recipe
+            </button>
           </div>
 
         </div>
-          <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button"
-                  class="btn btn-outline-primary">Save Recipe
-          </button>
       </div>
     </div>
   </div>
-  <div class="col-12 col-md-6">
+
+  <div class="col col-md-6">
     <div class="card ">
-      <div class="card-header">Template</div>
+      <div class="card-header">Instructions
+      </div>
+      <div class="card-body input-field">
+
+        <ol>
+          <li *ngFor="let instruction of instructions">{{instruction}}</li>
+        </ol>
+
+        <form (ngSubmit)="addInstructions(instruct)" #instruct="ngForm">
+          <div class="form-row ">
+            <div class="col-8">
+              <input
+                ngModel
+                name="instruction"
+                id="instruction"
+                type="text"
+                class="form-control"
+                placeholder="Instructions">
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn btn-sm btn-outline-info">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
