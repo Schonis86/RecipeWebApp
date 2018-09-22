@@ -4,6 +4,7 @@ import {Recipe} from '../models/recipe.model';
 import {Http} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import {Ingredient} from '../models/ingredient.model';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AppService {
