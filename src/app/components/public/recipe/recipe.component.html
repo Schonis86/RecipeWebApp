@@ -1,32 +1,60 @@
-<div class="card container-fluid">
-  <div class="recipe card-header"><h1>{{recipe?.name}}</h1></div>
-  <div class="card-body">
-    <div class="container top-div">
-      <div class="container ingredient-div">
-        <ul>
-          <li *ngFor="let i of recipe.ingredients ">{{i.qty * number}} {{i.measure}} {{i.product}}</li>
-        </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card">
 
-        <div>
-          <select #t (change)="changePortion(t.value)">
-            <option *ngFor="let portion of portions" [value]="portion" [selected]="portion == 4">{{portion}} Portioner</option>
-          </select>
+        <div class="recipe card-header">
+          <h1>{{recipe?.name}}</h1>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="left-div col-md-6">
+              <div class=" image-div">
+                <img *ngIf="recipe?.imageUrl" class="img-fluid rounded" [src]="recipe?.imageUrl">
+              </div>
+              <div>
+                <h5><u>Ingredienser</u></h5>
+                <ul>
+                  <li *ngFor="let ingredient of recipe?.ingredients">
+                    {{ingredient?.qty}} {{ingredient?.measure}} {{ingredient?.ingredient?.Namn}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="right-div col-md-6">
+              <h5><u>Instruktioner</u></h5>
+              <ol>
+                <li class="instructions"
+                    *ngFor="let instruction of recipe?.instructions">
+                  {{instruction}}
+                </li>
+              </ol>
+
+              <h5><u>Näringsämnen</u></h5>
+              <ul>
+                <li>kcal:</li>
+                <li>protein:</li>
+                <li>kolhydrater:</li>
+                <li>sokkerarter:</li>
+                <li>mättatfett:</li>
+
+              </ul>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
-
-      <div class=" container-fluid image-div">
-        <img *ngIf="recipe?.imageUrl" class="img-fluid" [src]="recipe?.imageUrl">
-      </div>
-
-    </div>
-
-    <div class="container bottom-div"></div>
-    <div class="container">
-      <div class="card-text">{{recipe?.description}}</div>
-    </div>
-    <div >
-
     </div>
   </div>
 </div>
+
+<!--
+  <select #t (change)="changePortion(t.value)">
+    <option *ngFor="let portion of portions" [value]="portion" [selected]="portion == 4">{{portion}}
+      Portioner
+    </option>
+  </select>-->
