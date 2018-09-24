@@ -15,9 +15,14 @@
               </div>
               <div>
                 <h5><u>Ingredienser</u></h5>
+                <select #t (change)="changePortion(t.value)">
+                  <option *ngFor="let portion of portions" [value]="portion" [selected]="portion == 4">{{portion}}
+                    Portioner
+                  </option>
+                </select>
                 <ul>
                   <li *ngFor="let ingredient of recipe?.ingredients">
-                    {{ingredient?.qty}} {{ingredient?.measure}} {{ingredient?.ingredient?.Namn}}
+                    {{ingredient?.qty.toFixed(2) * number}} {{ingredient?.measure}} {{ingredient?.ingredient?.Namn}}
                   </li>
                 </ul>
               </div>
@@ -32,11 +37,11 @@
                 </li>
               </ol>
 
-              <h5><u>Näringsämnen</u></h5>
+              <h5><u>Näringsämnen per portion</u></h5>
               <ul>
                 <li>kcal:</li>
-                <li>protein:</li>
-                <li>kolhydrater:</li>
+                <li>protein: {{nutritionInfo?.protein.toFixed(1)}} gram</li>
+                <li>kolhydrater: {{nutritionInfo?.kolhydrater.toFixed(1)}} gram</li>
                 <li>sokkerarter:</li>
                 <li>mättatfett:</li>
 
@@ -52,9 +57,3 @@
   </div>
 </div>
 
-<!--
-  <select #t (change)="changePortion(t.value)">
-    <option *ngFor="let portion of portions" [value]="portion" [selected]="portion == 4">{{portion}}
-      Portioner
-    </option>
-  </select>-->

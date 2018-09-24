@@ -54,6 +54,7 @@ export class AddRecipeComponent implements OnInit {
     this.ingredient.ingredient.Namn = this.myControl.value;
     this.ingredient.qty = f.value.qty;
     this.ingredient.measure = f.value.measure;
+    this.ingredient.qtyInGrams = f.value.qtyInGrams;
     console.log(this.ingredient);
     this.currentIngredients.push(this.ingredient);
     this.myControl.setValue('');

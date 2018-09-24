@@ -4,4 +4,5 @@ export class RecipeIngredient {
   ingredient: Ingredient;
   qty: number;
   measure: string;
+  qtyInGrams: number;
 }

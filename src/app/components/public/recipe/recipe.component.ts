@@ -6,6 +6,7 @@ import {RecipeIngredient} from '../../../models/recipeIngredient.model';
 import {ActivatedRoute} from '@angular/router';
 import {Ingredient} from '../../../models/ingredient.model';
 import {Nutritional} from '../../../models/nutritional.model';
+import {NutritionInfo} from '../../../models/nutritionInfo.model';
 
 @Component({
   selector: 'app-recipe',
@@ -18,7 +19,7 @@ export class RecipeComponent implements OnInit {
   result: 0;
   recipe: any;
   ingredients: RecipeIngredient[];
-  nutritionInfo: {};
+  nutritionInfo: any;
   portions: number[] = [2, 4, 6, 8, 10, 12];
   number = 4;
   i: Ingredient;
@@ -31,7 +32,6 @@ export class RecipeComponent implements OnInit {
       this._id = params['_id'];
       this.getRecipe(this._id);
     });
-    // this.recipe = this._service.getRecipe();
 
   }
 
@@ -43,14 +43,11 @@ export class RecipeComponent implements OnInit {
     this.recipe = await this._service.getRecipe(id).toPromise();
     console.log(this.recipe);
     this.nutritionInfo = {
-
-      kolhydrater: await this.getNutritionValue('Kolhydrater'),
-
+      kolhydrater:  await this.getNutritionValue('Kolhydrater'),
       protein: await this.getNutritionValue('Protein'),
-      socker: await this.getNutritionValue('Socker totalt'),
-      MFet: await this.getNutritionValue('Summa mättade fettsyror'),
-
-    };
+      // socker: await this.getNutritionValue('Socker totalt'),
+      // MFet: await this.getNutritionValue('Summa mättade fettsyror'),
+  };
     console.log(this.nutritionInfo);
   }
 
@@ -59,7 +56,8 @@ export class RecipeComponent implements OnInit {
       let result = 0;
       this.recipe.ingredients.forEach((recipeIngredient: RecipeIngredient) => {
         const value = recipeIngredient.ingredient.Naringsvarden.Naringsvarde.find(element => element.Namn === name);
-        result += +value.Varde.replace(',', '.');
+        result += recipeIngredient.qty * recipeIngredient.qtyInGrams / 100 * +value.Varde.replace(',', '.');
+        console.log(name + result);
         return result;
       });
       resolve(result);

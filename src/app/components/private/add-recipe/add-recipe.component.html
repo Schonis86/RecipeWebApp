@@ -49,6 +49,9 @@
                 <input ngModel name="qty" class="form-control" id="qty" type="number" placeholder="qty">
               </div>
               <div class="col-3">
+                <input placeholder="qty in grams" ngModel name="qtyInGrams" class="form-control ">
+              </div>
+              <div class="col-3">
                 <select [ngModel] name="measure" class="custom-select custom-select">
                   <option [value]="measure" *ngFor="let measure of measureList" name="measure" id="measure">{{measure}}
                   </option>
