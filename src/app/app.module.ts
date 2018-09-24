@@ -14,7 +14,6 @@ import {StartPageComponent} from './components/public/start-page/start-page.comp
 import {SideMenuComponent} from './components/side-menu/side-menu.component';
 import {RouterModule} from '@angular/router';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +21,7 @@ import {RouterModule} from '@angular/router';
     AddRecipeComponent,
     RecipeComponent,
     StartPageComponent,
-    SideMenuComponent
+    SideMenuComponent,
   ],
   imports: [
     HttpClientModule,

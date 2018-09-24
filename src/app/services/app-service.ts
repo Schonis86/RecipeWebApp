@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 export class AppService {
 
   recipeUrl = 'http://localhost:3000/recipes/';
+
   constructor(private _http: HttpClient) {
   }
 
@@ -22,12 +23,17 @@ export class AppService {
   }
 
   addRecipe(recipe: Recipe) {
-   return this._http.post(this.recipeUrl, recipe );
+    return this._http.post(this.recipeUrl, recipe);
   }
 
   getAutoCompleteList(letters) {
     const url = 'http://localhost:3000/ingredients/autoComplete-ingredient-name/';
     return this._http.get(url + letters);
+  }
+
+  searchRecipeByName(name) {
+    const url = 'http://localhost:3000/recipes/searchRecipeByName/';
+    return this._http.get(url + name);
   }
 
 

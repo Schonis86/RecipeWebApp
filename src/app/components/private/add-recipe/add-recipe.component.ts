@@ -25,17 +25,11 @@ export class AddRecipeComponent implements OnInit {
   filteredOptions: string[];
 
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
 
   constructor(private _service: AppService) {
   }
 
-  ngOnInit() {
-
-    // this.getautoComplteList();
-    // this.recipe = this._service.getRecipe();
-
-  }
+  ngOnInit() {}
 
   addRecipe(form: NgForm) {
 

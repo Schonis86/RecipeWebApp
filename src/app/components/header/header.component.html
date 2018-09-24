@@ -15,9 +15,17 @@
           <a class="nav-link" routerLink="add_recipe">Add Recipe</a>
         </li>
       </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search For Recipe" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline" >
+        <mat-form-field class="example-full-width" >
+          <input (keydown)="getAutoCompleteRecipes()" id="id" name="id" type="text" placeholder="Pick one" aria-label="" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let recipe of filteredRecipes" [value]="recipe">
+              {{recipe.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <!--<input class="form-control mr-sm-2" type="search" placeholder="Search For Recipe" aria-label="Search">-->
+        <button (click)="gotoRecipe()" class="btn btn-outline-success my-2 my-sm-0" type="btn">Search</button>
       </form>
     </div>
   </nav>
