@@ -16,7 +16,6 @@ import {NutritionInfo} from '../../../models/nutritionInfo.model';
 export class RecipeComponent implements OnInit {
   private sub: any;
   _id: any;
-  result: 0;
   recipe: any;
   ingredients: RecipeIngredient[];
   nutritionInfo: any;
@@ -41,7 +40,6 @@ export class RecipeComponent implements OnInit {
 
   async getRecipe(id) {
     this.recipe = await this._service.getRecipe(id).toPromise();
-    console.log(this.recipe);
     this.nutritionInfo = {
       kolhydrater:  await this.getNutritionValue('Kolhydrater'),
       protein: await this.getNutritionValue('Protein'),
@@ -57,7 +55,6 @@ export class RecipeComponent implements OnInit {
       this.recipe.ingredients.forEach((recipeIngredient: RecipeIngredient) => {
         const value = recipeIngredient.ingredient.Naringsvarden.Naringsvarde.find(element => element.Namn === name);
         result += recipeIngredient.qty * recipeIngredient.qtyInGrams / 100 * +value.Varde.replace(',', '.');
-        console.log(name + result);
         return result;
       });
       resolve(result);

@@ -43,7 +43,6 @@ export class StartPageComponent implements OnInit {
     if (recipeName) {
       if (recipeName.length < 3) {
         this._service.searchRecipeByName(recipeName).subscribe((data: RecipeAutoComplete[]) => {
-          console.log(data);
           this.recipeList = data;
           this.filteredRecipes = data;
         });

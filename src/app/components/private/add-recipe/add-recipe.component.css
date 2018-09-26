@@ -7,7 +7,6 @@
 ul li {
   list-style: none;
 }
-
 .card {
   min-height: 93vh;
 }
@@ -25,4 +24,5 @@ ul li {
     display: flex;
     flex-direction: column;
   }
+
 }

@@ -23,4 +23,10 @@ h5 {
   h5{
     margin-top: 10px;
   }
+
+  .right-div {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+  }
 }
