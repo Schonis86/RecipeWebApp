@@ -17,12 +17,13 @@
                 <img *ngIf="recipe?.imageUrl" class="img-fluid rounded" [src]="recipe?.imageUrl">
               </div>
               <div>
-                <h5><u>Ingredienser</u></h5>
-                <select #t (change)="changePortion(t.value)">
-                  <option *ngFor="let portion of portions" [value]="portion" [selected]="portion == 4">{{portion}}
-                    Portioner
-                  </option>
-                </select>
+
+                <mat-form-field >
+                  <mat-select placeholder="Antal Portioner" #t (selectionChange)="changePortion(t.value)" >
+                    <mat-option *ngFor="let portion of portions" [value]="portion">{{portion}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
                 <ul>
                   <li *ngFor="let ingredient of recipe?.ingredients">
                     {{ingredient?.qty.toFixed(2) * number}} {{ingredient?.measure}} {{ingredient?.ingredient?.Namn}}
