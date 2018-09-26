@@ -20,7 +20,7 @@ export class StartPageComponent implements OnInit {
   recipeList: any[];
   allrecipes: Recipe[] = [];
   filteredRecipes: any[] = [];
-  categoryList: string[] = ['Alla', 'Lättlagat', 'Fest', 'Söndagsmiddag', 'Matlåda', 'Barnkalas'];
+  categoryList: string[] = ['Alla', 'Lättlagat', 'Fest', 'Söndagsmiddag', 'Matlåda'];
 
   ngOnInit() {
     this.getAllRecipe();
@@ -56,7 +56,7 @@ export class StartPageComponent implements OnInit {
     return recipe ? recipe.name : undefined;
   }
 
-  gotoRecipe() {
+  goTooRecipe() {
     this.router.navigate(['/recipe', this.myControl.value.id]);
     this.myControl.reset();
   }

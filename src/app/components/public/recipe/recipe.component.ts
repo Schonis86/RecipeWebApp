@@ -40,10 +40,11 @@ export class RecipeComponent implements OnInit {
 
   async getRecipe(id) {
     this.recipe = await this._service.getRecipe(id).toPromise();
+    console.log(this.recipe);
     this.nutritionInfo = {
       kolhydrater:  await this.getNutritionValue('Kolhydrater'),
       protein: await this.getNutritionValue('Protein'),
-      // socker: await this.getNutritionValue('Socker totalt'),
+      energi: await this.getNutritionValue('Energi (kcal)'),
       // MFet: await this.getNutritionValue('Summa mättade fettsyror'),
   };
     console.log(this.nutritionInfo);

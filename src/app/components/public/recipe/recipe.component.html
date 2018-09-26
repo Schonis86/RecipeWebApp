@@ -32,25 +32,27 @@
             </div>
 
             <div class="right-div col-md-6">
-           <div>
-             <h5><u>Instruktioner</u></h5>
-             <ol>
-               <li class="instructions"
-                   *ngFor="let instruction of recipe?.instructions">
-                 {{instruction}}
-               </li>
-             </ol>
-           </div>
+              <div class="row">
+                <div class="col-12 order-last col-md-12 order-first">
+                  <h5><u>Instruktioner</u></h5>
+                  <ol>
+                    <li class="instructions"
+                        *ngFor="let instruction of recipe?.instructions">
+                      {{instruction}}
+                    </li>
+                  </ol>
+                </div>
 
-              <div>
-                <h5><u>Näringsämnen per portion</u></h5>
-                <ul>
-                  <li>kcal:</li>
-                  <li>protein: {{nutritionInfo?.protein.toFixed(1)}} gram</li>
-                  <li>kolhydrater: {{nutritionInfo?.kolhydrater.toFixed(1)}} gram</li>
-                  <li>sokkerarter:</li>
-                  <li>mättatfett:</li>
-                </ul>
+                <div class="col-12 order-first col-md-12 last">
+                  <h5><u>Näringsämnen per portion</u></h5>
+                  <ul>
+                    <li>Energi (kcal): {{nutritionInfo?.energi}}</li>
+                    <li>protein: {{nutritionInfo?.protein.toFixed(1)}} gram</li>
+                    <li>kolhydrater: {{nutritionInfo?.kolhydrater.toFixed(1)}} gram</li>
+                    <li>sokkerarter:</li>
+                    <li>mättatfett:</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
