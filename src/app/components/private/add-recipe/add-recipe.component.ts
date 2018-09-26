@@ -18,7 +18,7 @@ export class AddRecipeComponent implements OnInit {
   ingredient: RecipeIngredient;
   instructions: string[] = [];
   recipe: Recipe = new Recipe();
-  categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'MatLåda', 'BarnKalas'];
+  categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'Matlåda', 'Barnkalas'];
   measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe', 'portioner'];
   currentIngredients: RecipeIngredient[] = [];
   autoCompleteList: string[] = [];

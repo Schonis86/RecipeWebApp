@@ -1,19 +1,60 @@
 <main class="container-fluid">
-        <div class="row">
-      <div *ngFor="let recipe of recipeList" [routerLink]="['/recipe',recipe._id]" class="col-12 col-md-4 ">
-        <div  class="start-page-card card ">
-        <div class="card-header">{{recipe.name}}</div>
-        <div class="card-body">
-          <div class=" top-div">
-            <div class="image-div">
-              <img *ngIf="recipe.imageUrl" class="img-fluid" [src]="recipe?.imageUrl">
+  <div class="row">
+
+    <div class="side-menu col-12 col-md-2">
+      <form class="form-inline">
+        <mat-form-field class="example-full-width">
+
+          <input (keydown)="getAutoCompleteRecipes()" id="id" name="id" type="text" placeholder="Search For Recipe"
+                 aria-label="" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let recipe of filteredRecipes" [value]="recipe">
+              {{recipe.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <!--<input class="form-control mr-sm-2" type="search" placeholder="Search For Recipe" aria-label="Search">-->
+        <button (click)="gotoRecipe()" class="btn btn-outline-success my-2 my-sm-0" type="btn">Search</button>
+      </form>
+
+      category
+
+      <form>
+        <mat-form-field>
+          <mat-select (selectionChange)="getByCategory($event.value)">
+            <mat-option *ngFor="let category of categoryList" value="{{category}}">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+
+
+    </div>
+    <div class="recipes col-12 col-md-10">
+      <div class="row">
+
+
+        <div *ngFor="let recipe of allrecipes" [routerLink]="['/recipe',recipe._id]" class="col-12 col-md-4 ">
+          <div class="start-page-card card ">
+            <div class="card-header">
+              <div class="row">
+              <span class="col-8"> {{recipe.name}}</span>
+              <span class="badge badge-secondary col-4 align-self-center"> {{recipe.category}}</span>
+              </div>
+
             </div>
-          </div>
-          <div class=" bottom-div"></div>
-          <div class="">
-            <div class="card-text">{{recipe?.description}}</div>
-          </div>
-          <div>
+            <div class="card-body">
+              <div class=" top-div">
+                <div class="image-div">
+                  <img *ngIf="recipe.imageUrl" class="img-fluid rounded" [src]="recipe?.imageUrl">
+                </div>
+              </div>
+              <div class=" bottom-div"></div>
+              <div class="">
+                <div class="card-text">{{recipe?.description}}</div>
+              </div>
+              <div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

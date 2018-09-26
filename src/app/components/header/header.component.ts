@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  getAutoCompleteRecipes() {
+  /*getAutoCompleteRecipes() {
     const recipeName = this.myControl.value;
     if (recipeName) {
       if (recipeName.length < 3) {
@@ -35,15 +35,15 @@ export class HeaderComponent implements OnInit {
         this.filteredRecipes = this.recipeList.filter(options => options.name.indexOf(recipeName) === 0);
       }
     }
-  }
+  }*/
 
-  displayFn(recipe?: RecipeAutoComplete): string | undefined {
+/*  displayFn(recipe?: RecipeAutoComplete): string | undefined {
     return recipe ? recipe.name : undefined;
   }
 
   gotoRecipe() {
     this.router.navigate(['/recipe', this.myControl.value.id]);
     this.myControl.reset();
-  }
+  }*/
 
 }

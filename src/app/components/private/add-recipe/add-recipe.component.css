@@ -9,7 +9,7 @@ ul li {
 }
 
 .card {
-  height: 93vh;
+  min-height: 93vh;
 }
 
 

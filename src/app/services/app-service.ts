@@ -37,4 +37,8 @@ export class AppService {
   }
 
 
+  getByRecipeCategory(value) {
+    const url = 'http://localhost:3000/recipes/searchRecipeByCategory/';
+    return this._http.get(url + value);
+  }
 }
