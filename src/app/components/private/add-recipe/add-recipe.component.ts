@@ -18,7 +18,7 @@ export class AddRecipeComponent implements OnInit {
   ingredient: RecipeIngredient;
   instructions: string[] = [];
   recipe: Recipe = new Recipe();
-  categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'Matlåda', 'Barnkalas'];
+  categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'Matlåda'];
   measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe', 'portioner'];
   currentIngredients: RecipeIngredient[] = [];
   autoCompleteList: string[] = [];
@@ -47,6 +47,7 @@ export class AddRecipeComponent implements OnInit {
     this.ingredient.ingredient = new Ingredient();
     this.ingredient.ingredient.Namn = this.myControl.value;
     this.ingredient.qty = f.value.qty;
+    this.ingredient.showName = f.value.showName;
     this.ingredient.measure = f.value.measure;
     this.ingredient.qtyInGrams = f.value.qtyInGrams;
     console.log(this.ingredient);

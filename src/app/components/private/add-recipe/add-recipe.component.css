@@ -11,6 +11,9 @@ ul li {
   min-height: 93vh;
 }
 
+.ingredients {
+  min-height: 10vh;
+}
 
 .input-field {
   display: flex;
