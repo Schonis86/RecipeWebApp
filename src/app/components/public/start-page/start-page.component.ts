@@ -48,7 +48,7 @@ export class StartPageComponent implements OnInit {
           this.filteredRecipes = data;
         });
       } else {
-        this.filteredRecipes = this.recipeList.filter(options => options.name.indexOf(recipeName) === 0);
+        this.filteredRecipes = this.recipeList.filter(options => options.name.toLowerCase().indexOf(recipeName) === 0);
       }
     }
   }
