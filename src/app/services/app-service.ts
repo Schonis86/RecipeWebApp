@@ -5,13 +5,17 @@ import {Http} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
 import {Ingredient} from '../models/ingredient.model';
 import {Observable} from 'rxjs';
+import {User} from '../models/user.model';
 
 @Injectable()
 export class AppService {
 
+  loginState: boolean;
+
   recipeUrl = 'http://localhost:3000/recipes/';
 
   constructor(private _http: HttpClient) {
+    this.loginState = false;
   }
 
   getRecipe(id) {
@@ -36,9 +40,14 @@ export class AppService {
     return this._http.get(url + name);
   }
 
-
   getByRecipeCategory(value) {
     const url = 'http://localhost:3000/recipes/searchRecipeByCategory/';
     return this._http.get(url + value);
   }
+
+  checkUser(user: User) {
+    const url = 'http://localhost:3000/user/checkStatus/';
+    return this._http.post(url, user);
+  }
+
 }
