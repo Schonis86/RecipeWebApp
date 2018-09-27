@@ -101,16 +101,16 @@
 
         <form (ngSubmit)="addInstructions(instruct)" #instruct="ngForm">
           <div class="form-row ">
-            <div class="col-8">
-              <input
-                ngModel
-                name="instruction"
-                id="instruction"
-                type="text"
-                class="form-control"
-                placeholder="Instructions">
-            </div>
-            <div class="col-4">
+             <mat-form-field class="col-12">
+               <input
+                 matInput
+                 ngModel
+                 name="instruction"
+                 id="instruction"
+                 type="text"
+                 placeholder="Instructions">
+             </mat-form-field>
+            <div class="col-12">
               <button type="submit" class="btn btn-sm btn-outline-info">Save</button>
             </div>
           </div>
