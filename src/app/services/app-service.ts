@@ -46,8 +46,21 @@ export class AppService {
   }
 
   checkUser(user: User) {
-    const url = 'http://localhost:3000/user/checkStatus/';
-    return this._http.post(url, user);
+    return new Promise((resolve, reject) => {
+      const url = 'http://localhost:3000/users/';
+      this._http.post(url, user).subscribe(data => {
+        this.loginState = data['user'];
+        if (this.loginState) {
+          console.log(this.loginState);
+          resolve(this.loginState);
+        } else {
+          console.log(this.loginState);
+          reject(this.loginState);
+
+        }
+      });
+    });
+
   }
 
 }

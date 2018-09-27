@@ -4,6 +4,7 @@ import {RecipeIngredient} from '../../../models/recipeIngredient.model';
 import {Recipe} from '../../../models/recipe.model';
 import {AppService} from '../../../services/app-service';
 import {Ingredient} from '../../../models/ingredient.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-recipe',
@@ -26,10 +27,14 @@ export class AddRecipeComponent implements OnInit {
 
   myControl = new FormControl();
 
-  constructor(private _service: AppService) {
+  constructor(private _service: AppService, private router: Router) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (!this._service.loginState) {
+      this.router.navigate(['/login']);
+    }
+  }
 
   addRecipe(form: NgForm) {
 

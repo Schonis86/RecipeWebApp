@@ -12,6 +12,7 @@ import {User} from '../../../models/user.model';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage = '';
+  status: any;
 
   constructor(private fb: FormBuilder, private router: Router, private _service: AppService) {
     this.createForm();
@@ -27,11 +28,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  emailLogin(value) {
+  async emailLogin(value) {
     const user = new User();
-    user.userName = value.email;
+    user.username = value.email;
     user.password = value.password;
-    this._service.checkUser(user);
+    this.status = await this._service.checkUser(user);
+    if (this._service.loginState) {
+      this.router.navigate(['/add_recipe']);
+    }
   }
 
 }
