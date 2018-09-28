@@ -45,6 +45,11 @@ export class AppService {
     return this._http.get(url + value);
   }
 
+  searchRecipeByDescription(value) {
+    const url = 'http://localhost:3000/recipes/searchByDescription/';
+    return this._http.get(url + value);
+  }
+
   checkUser(user: User) {
     return new Promise((resolve, reject) => {
       const url = 'http://localhost:3000/users/';

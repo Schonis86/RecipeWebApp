@@ -17,6 +17,7 @@ export class StartPageComponent implements OnInit {
 
   // recipeList: Recipe[] = [];
   myControl = new FormControl();
+  descriptionControl = new FormControl();
   recipeList: any[];
   allrecipes: Recipe[] = [];
   filteredRecipes: any[] = [];
@@ -34,7 +35,16 @@ export class StartPageComponent implements OnInit {
     if (value === 'Alla') {
       this.getAllRecipe();
     } else {
-    this._service.getByRecipeCategory(value).subscribe((data: Recipe[]) => this.allrecipes = data);
+      this._service.getByRecipeCategory(value).subscribe((data: Recipe[]) => this.allrecipes = data);
+    }
+  }
+
+  searchByDesciption() {
+    const value = this.descriptionControl.value;
+    if (value) {
+      this._service.searchRecipeByDescription(value).subscribe((data: Recipe[]) => this.allrecipes = data);
+    } else {
+      this.getAllRecipe();
     }
   }
 
