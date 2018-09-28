@@ -42,9 +42,14 @@ export class RecipeComponent implements OnInit {
     this.recipe = await this._service.getRecipe(id).toPromise();
     console.log(this.recipe);
     this.nutritionInfo = {
-      kolhydrater:  await this.getNutritionValue('Kolhydrater'),
-      protein: await this.getNutritionValue('Protein'),
-      energi: await this.getNutritionValue('Energi (kcal)'),
+      kolhydrater:  await this.getNutritionValue('Kolh'),
+      protein: await this.getNutritionValue('Prot'),
+      energi: await this.getNutritionValue('Ener'),
+      salt: await this.getNutritionValue('NaCl'),
+      mattat: await this.getNutritionValue('Mfet'),
+      omattat: await this.getNutritionValue('Mone'),
+      fleromattat: await this.getNutritionValue('Pole'),
+      socker: await this.getNutritionValue('Mono/disack'),
       // MFet: await this.getNutritionValue('Summa mättade fettsyror'),
   };
     console.log(this.nutritionInfo);
@@ -54,7 +59,7 @@ export class RecipeComponent implements OnInit {
     return new Promise(resolve => {
       let result = 0;
       this.recipe.ingredients.forEach((recipeIngredient: RecipeIngredient) => {
-        const value = recipeIngredient.ingredient.Naringsvarden.Naringsvarde.find(element => element.Namn === name);
+        const value = recipeIngredient.ingredient.Naringsvarden.Naringsvarde.find(element => element.Forkortning === name);
         result += recipeIngredient.qty * recipeIngredient.qtyInGrams / 100 * +value.Varde.replace(',', '.');
         return result;
       });

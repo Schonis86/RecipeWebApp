@@ -46,13 +46,24 @@
 
                 <div class="col-12 order-first col-md-12 last">
                   <h5><u>Näringsämnen per portion</u></h5>
-                  <ul>
-                    <li>Energi (kcal): {{nutritionInfo?.energi}}</li>
-                    <li>protein: {{nutritionInfo?.protein.toFixed(1)}} gram</li>
-                    <li>kolhydrater: {{nutritionInfo?.kolhydrater.toFixed(1)}} gram</li>
-                    <li>sokkerarter:</li>
-                    <li>mättatfett:</li>
-                  </ul>
+                 <div class="row">
+                   <div class="col-12 col-md-6">
+                     <ul>
+                       <li><u>Energi (kcal):</u> {{nutritionInfo?.energi}}</li>
+                       <li><u>Protein:</u> {{nutritionInfo?.protein.toFixed(1)}} gram</li>
+                       <li><u>kolhydrater:</u> {{nutritionInfo?.kolhydrater.toFixed(1)}} gram</li>
+                       <li><u>Sockerarter:</u> {{nutritionInfo?.socker.toFixed(1)}} gram</li>
+                     </ul>
+                   </div>
+                   <div class="col-12 col-md-6">
+                     <ul>
+                       <li><u>Mättat fett:</u> {{nutritionInfo?.mattat.toFixed(1)}} gram</li>
+                       <li><u>Omättat fett:</u> {{nutritionInfo?.omattat.toFixed(1)}} gram</li>
+                       <li><u>Fleromättat fett:</u> {{nutritionInfo?.fleromattat.toFixed(1)}} gram</li>
+                       <li><u>Salt:</u> {{nutritionInfo?.salt.toFixed(1)}} gram</li>
+                     </ul>
+                   </div>
+                 </div>
                 </div>
               </div>
             </div>

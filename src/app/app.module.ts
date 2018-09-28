@@ -46,7 +46,7 @@ import { LoginComponent } from './components/public/login/login.component';
       {path: 'recipe/:_id', component: RecipeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'add_recipe', component: AddRecipeComponent},
-      {path: 'all_recipes', component: StartPageComponent}
+      {path: '', component: StartPageComponent}
 
     ])
   ],
