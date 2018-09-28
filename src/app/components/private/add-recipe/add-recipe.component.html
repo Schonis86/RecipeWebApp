@@ -79,6 +79,7 @@
             <ul>
               <li *ngFor="let ingredient of currentIngredients">
                 {{ingredient.qty}} {{ingredient.measure}} {{ingredient.showName}}
+                <span><img (click)="deleteIngredient(ingredient)" [src]="TRASH"></span>
               </li>
             </ul>
           </div>
@@ -96,7 +97,7 @@
       <div class="card-body input-field">
 
         <ol>
-          <li *ngFor="let instruction of instructions">{{instruction}}</li>
+          <li *ngFor="let instruction of instructions">{{instruction}} <span ><img (click)="deleteInstruction(instruction)" class="img-fluid" [src]="TRASH"></span></li>
         </ol>
 
         <form (ngSubmit)="addInstructions(instruct)" #instruct="ngForm">

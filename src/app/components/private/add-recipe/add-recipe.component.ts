@@ -25,6 +25,8 @@ export class AddRecipeComponent implements OnInit {
   autoCompleteList: string[] = [];
   filteredOptions: string[];
 
+  TRASH = './assets/img/delete.png';
+
   myControl = new FormControl();
 
   constructor(private _service: AppService, private router: Router) {
@@ -46,6 +48,16 @@ export class AddRecipeComponent implements OnInit {
     form.reset();
   }
 
+  deleteIngredient(ingredient) {
+    const toDelete = this.currentIngredients.indexOf(ingredient);
+    this.currentIngredients.splice(toDelete, 1);
+  }
+
+  deleteInstruction(instruction) {
+    const toDelete = this.instructions.indexOf(instruction);
+    this.instructions.splice(toDelete, 1);
+  }
+
   addIngredient(f: NgForm) {
 
     this.ingredient = new RecipeIngredient();
@@ -59,6 +71,7 @@ export class AddRecipeComponent implements OnInit {
     this.currentIngredients.push(this.ingredient);
     this.myControl.setValue('');
   }
+
   addInstructions(instruct: NgForm) {
     this.instructions.push(instruct.value.instruction);
     instruct.reset();

@@ -4,6 +4,14 @@
   flex-direction: row;
 }
 
+img {
+  max-width: 15px;
+}
+
+span img {
+  cursor: pointer;
+}
+
 ul li {
   list-style: none;
 }
