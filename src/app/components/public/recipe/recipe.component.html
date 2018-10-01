@@ -18,11 +18,14 @@
               </div>
               <div>
 
+
                 <mat-form-field >
                   <mat-select placeholder="Antal Portioner" #t (selectionChange)="changePortion(t.value)" >
                     <mat-option *ngFor="let portion of portions" [value]="portion">{{portion}}</mat-option>
                   </mat-select>
                 </mat-form-field>
+
+                <h5><u>Ingredienser</u></h5>
 
                 <ul>
                   <li *ngFor="let ingredient of recipe?.ingredients">

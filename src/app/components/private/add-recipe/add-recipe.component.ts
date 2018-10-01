@@ -38,7 +38,7 @@ export class AddRecipeComponent implements OnInit {
     }
   }
 
-  addRecipe(form: NgForm) {
+  addRecipeInfo(form: NgForm) {
 
     this.recipe.name = form.value.name;
     this.recipe.description = form.value.recipeDescription;

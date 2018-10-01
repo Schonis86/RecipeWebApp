@@ -4,7 +4,7 @@
     <div class="card ">
       <div class="card-header">Add Recipe Info</div>
       <div class="card-body">
-        <form (ngSubmit)="addRecipe(formen)" #formen="ngForm">
+        <form (ngSubmit)="addRecipeInfo(formen)" #formen="ngForm">
           <div class="form-group">
             <mat-form-field class="col-12">
               <input matInput ngModel name="name" type="text" id="name"
@@ -14,7 +14,7 @@
 
           <div class="form-group">
             <mat-form-field class="col-12 col-md-6">
-              <mat-select placeholder="Category">
+              <mat-select  [ngModel] placeholder="Category" name="category">
                 <mat-option [value]="category" *ngFor="let category of categoryList">{{category}}</mat-option>
               </mat-select>
             </mat-form-field>

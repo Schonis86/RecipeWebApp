@@ -5,6 +5,9 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.start-page-card {
+  margin-bottom: 20px;
+}
 
 @media (min-width: 350px) and (max-width: 900px) {
   .start-div {
@@ -12,7 +15,5 @@
     flex-direction: column;
     flex-wrap: wrap;
   }
-  .start-page-card {
-    margin-bottom: 20px;
-  }
+
 }
