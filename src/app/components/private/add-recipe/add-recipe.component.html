@@ -40,7 +40,8 @@
           <div class="col-12 order-2 col-md-6 ">
             <form (ngSubmit)="addIngredient(f)" #f="ngForm" class="form-row">
               <mat-form-field class="col-12">
-                <input (keydown)="getautoCompleteList()" type="text" placeholder="Ingredient Name" aria-label="Number" matInput
+                <input (keydown)="getautoCompleteList()" type="text" placeholder="Ingredient Name" aria-label="Number"
+                       matInput
                        [formControl]="myControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
                   <mat-option *ngFor="let option of filteredOptions" [value]="option">
@@ -62,16 +63,16 @@
               </mat-form-field>
 
               <mat-form-field class="col-6">
-                <mat-select [ngModel] name="measure"  placeholder="Type">
-                  <mat-option [value]="measure" *ngFor="let measure of measureList"  id="measure">{{measure}}
+                <mat-select [ngModel] name="measure" placeholder="Type">
+                  <mat-option [value]="measure" *ngFor="let measure of measureList" id="measure">{{measure}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
 
               <button type="submit" class="btn-sm btn-outline-primary ">Add</button>
-            <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button"
-                    class="btn btn-outline-primary">Save Recipe
-            </button>
+              <button *ngIf="!currentIngredients.length == [0]" (click)="saveRecipe()" type="button"
+                      class="btn btn-outline-primary">Save Recipe
+              </button>
             </form>
           </div>
 
@@ -96,21 +97,26 @@
       </div>
       <div class="card-body input-field">
 
-        <ol>
-          <li *ngFor="let instruction of instructions">{{instruction}} <span ><img (click)="deleteInstruction(instruction)" class="img-fluid" [src]="TRASH"></span></li>
+        <ol >
+          <li *ngFor="let instruction of instructions">
+              <span>
+              <img (click)="deleteInstruction(instruction)" class="img-fluid" [src]="TRASH">
+            </span>
+              {{instruction}}
+          </li>
         </ol>
 
         <form (ngSubmit)="addInstructions(instruct)" #instruct="ngForm">
           <div class="form-row ">
-             <mat-form-field class="col-12">
-               <input
-                 matInput
-                 ngModel
-                 name="instruction"
-                 id="instruction"
-                 type="text"
-                 placeholder="Instructions">
-             </mat-form-field>
+            <mat-form-field class="col-12">
+              <input
+                matInput
+                ngModel
+                name="instruction"
+                id="instruction"
+                type="text"
+                placeholder="Instructions">
+            </mat-form-field>
             <div class="col-12">
               <button type="submit" class="btn btn-sm btn-outline-info">Save</button>
             </div>
