@@ -1,37 +1,37 @@
-<div class="row">
+<div class="row background-img">
   <div class="col-12 col-md-6">
 
     <div class="card ">
-      <div class="card-header">Add Recipe Info</div>
+      <div class="card-header">Add Recipe Info <span class="saved" *ngIf="recipe" >SAVED!</span></div>
       <div class="card-body">
         <form (ngSubmit)="addRecipeInfo(formen)" #formen="ngForm">
           <div class="form-group">
             <mat-form-field class="col-12">
-              <input matInput ngModel name="name" type="text" id="name"
+              <input required matInput ngModel name="name" type="text" id="name"
                      placeholder="Recipe Name">
             </mat-form-field>
           </div>
 
           <div class="form-group">
             <mat-form-field class="col-12 col-md-6">
-              <mat-select  [ngModel] placeholder="Category" name="category">
+              <mat-select [required]  [ngModel] placeholder="Category" name="category">
                 <mat-option [value]="category" *ngFor="let category of categoryList">{{category}}</mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field class="col-12 col-md-6">
-              <input matInput type="text" placeholder="Picture Url" id="url" ngModel name="url">
+              <input required matInput type="text" placeholder="Picture Url" id="url" ngModel name="url">
             </mat-form-field>
           </div>
 
           <div class="form-group">
             <mat-form-field class="col">
-            <textarea matInput ngModel name="recipeDescription" class="form-control" id="recipeDescription" rows="3"
+            <textarea required matInput ngModel name="recipeDescription" class="form-control" id="recipeDescription" rows="3"
                       placeholder="Recipe Description"></textarea>
             </mat-form-field>
           </div>
           <div class="form-group ">
-            <button mat-stroked-button type="submit">Store</button>
+            <button *ngIf="!recipe" mat-stroked-button type="submit">Store</button>
           </div>
         </form>
 

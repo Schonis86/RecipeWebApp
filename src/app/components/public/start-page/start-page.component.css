@@ -9,6 +9,10 @@
   margin-bottom: 20px;
 }
 
+.background-img {
+  background-image: image-set();
+}
+
 @media (min-width: 350px) and (max-width: 900px) {
   .start-div {
     display: flex;

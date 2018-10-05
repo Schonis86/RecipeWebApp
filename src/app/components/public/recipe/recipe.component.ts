@@ -49,8 +49,7 @@ export class RecipeComponent implements OnInit {
       mattat: await this.getNutritionValue('Mfet'),
       omattat: await this.getNutritionValue('Mone'),
       fleromattat: await this.getNutritionValue('Pole'),
-      socker: await this.getNutritionValue('Mono/disack'),
-      // MFet: await this.getNutritionValue('Summa mättade fettsyror'),
+      socker: await this.getNutritionValue('Mono/disack')
   };
     console.log(this.nutritionInfo);
   }
@@ -61,23 +60,9 @@ export class RecipeComponent implements OnInit {
       this.recipe.ingredients.forEach((recipeIngredient: RecipeIngredient) => {
         const value = recipeIngredient.ingredient.Naringsvarden.Naringsvarde.find(element => element.Forkortning === name);
         result += recipeIngredient.qty * recipeIngredient.qtyInGrams / 100 * +value.Varde.replace(',', '.');
-        return result;
+        return result.toFixed(2);
       });
       resolve(result);
     });
   }
-
-  /* async getNutritionValue(name) {
-     let result = 0;
-
-     // Hittar alla ingredienser i näringslistan som finns i receptet.
-     const ingredients = await recipeIngredient.ingredient.find({ Namn : { $in: this.recipe.ingredients} });
-
-     // Lägger ihop alla näringsvärden som heter samma som inparametern 'name'. nv = näringsvärde
-     const value = ingredients.Naringsvarden.Naringsvarde.reduce((acc, nv) => nv.Namn === name ? acc += +nv.Varde.replace(',', '.') : acc, 0);
-
-     result += value;
-
-     return result;
-   }*/
 }

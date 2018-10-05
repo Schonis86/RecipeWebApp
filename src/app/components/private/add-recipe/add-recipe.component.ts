@@ -15,10 +15,9 @@ import {Router} from '@angular/router';
   }
 })
 export class AddRecipeComponent implements OnInit {
-  // currentIngredients: RecipeIngredient[] = [];
   ingredient: RecipeIngredient;
   instructions: string[] = [];
-  recipe: Recipe = new Recipe();
+  recipe: Recipe;
   categoryList: string[] = ['Lättlagat', 'Fest', 'Söndagsmiddag', 'Matlåda'];
   measureList: string[] = ['st', 'tsk', 'msk', 'gram', 'kilo', 'cl', 'dl', 'liter', 'knippe', 'portioner'];
   currentIngredients: RecipeIngredient[] = [];
@@ -39,13 +38,13 @@ export class AddRecipeComponent implements OnInit {
   }
 
   addRecipeInfo(form: NgForm) {
+    this.recipe = new Recipe();
 
     this.recipe.name = form.value.name;
     this.recipe.description = form.value.recipeDescription;
     this.recipe.imageUrl = form.value.url;
     this.recipe.category = form.value.category;
     console.log(this.recipe);
-    form.reset();
   }
 
   deleteIngredient(ingredient) {
@@ -67,7 +66,7 @@ export class AddRecipeComponent implements OnInit {
     this.ingredient.showName = f.value.showName;
     this.ingredient.measure = f.value.measure;
     this.ingredient.qtyInGrams = f.value.qtyInGrams;
-    console.log(this.ingredient);
+
     this.currentIngredients.push(this.ingredient);
     this.myControl.setValue('');
   }
@@ -80,7 +79,7 @@ export class AddRecipeComponent implements OnInit {
   saveRecipe() {
     this.recipe.instructions = this.instructions;
     this.recipe.ingredients = this.currentIngredients;
-    console.log(this.recipe);
+
     this._service.addRecipe(this.recipe).subscribe(() => {
       console.log('Saved');
       this.currentIngredients = [];
@@ -94,7 +93,6 @@ export class AddRecipeComponent implements OnInit {
         this._service.getAutoCompleteList(letters).subscribe((data: string[]) => {
           this.autoCompleteList = data;
           this.filteredOptions = data;
-          console.log(this.autoCompleteList);
         });
       } else {
         this.filteredOptions = this.autoCompleteList.filter(options => options.toLowerCase().indexOf(letters) === 0);
